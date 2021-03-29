@@ -24,5 +24,5 @@ wm = pygal.maps.world.World()
 wm.title = 'World Population in 2010, by Country'
 wm.add('2010', cc_populations)
 
-wm.render_to_file('world_populations.svg')
+wm.render_to_file('figures/world_populations.svg')
 
