@@ -4,20 +4,27 @@ from datetime import datetime
 
 # get dates, high and low temperatures from a file.
 
-filename = 'sitka_weather_2014.csv'
+filename = 'death_valley_2014.csv'
 with open(filename) as f:
     reader = csv.reader(f)
     header_row = next(reader)
     #print(header_row)
     dates, highs, lows = [], [], []
     for row in reader:
-        current_date = datetime.strptime(row[0], "%Y-%m-%d")
-        dates.append(current_date)
-        high = int(row[1])
-        highs.append(high)
+        try:
 
-        low = int(row[3])
-        lows.append(low)
+            current_date = datetime.strptime(row[0], "%Y-%m-%d")
+            high = int(row[1])
+            low = int(row[3])
+
+        except ValueError:
+            print(current_date, 'missing data')
+
+        else:
+            dates.append(current_date)
+            highs.append(high)
+            lows.append(low)
+
     #print(highs)
     #for index, column_header in enumerate(header_row):
         #print(index, column_header)
@@ -31,14 +38,12 @@ with open(filename) as f:
 
     # Format plot.
 
-    plt.title("Daily high and low temperatures - 2014", fontsize=24)
+    title = ("Daily high and low temperatures - 2014\nDeath Valley, CA")
+    plt.title(title, fontsize=20)
     plt.xlabel('', fontsize=16)
     fig.autofmt_xdate()
     plt.ylabel("Temperature (F)", fontsize=16)
     plt.tick_params(axis='both', which='major', labelsize=16)
 
-    plt.savefig('high_low')
-
+    plt.savefig('high_low_Death_Valley')
     plt.show()
-
-    
