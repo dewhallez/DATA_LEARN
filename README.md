@@ -73,4 +73,3 @@ This project is licensed under the MIT License.
 *Feel free to contribute or open issues!*
 
 ```
-Replace `<your-username>/<your-repo>` with your actual GitHub username and repository
